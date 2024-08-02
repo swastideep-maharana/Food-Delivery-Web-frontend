@@ -6,6 +6,8 @@ export const StoreContext = createContext(null);
 
 const StoreContextProvider = (props) => {
   const [cartItems, setCartItems] = useState({});
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
   const url = "http://localhost:4000";
   const [token, setToken] = useState(localStorage.getItem("token") || "");
   const [food_list, setFoodList] = useState([]);
@@ -48,8 +50,16 @@ const StoreContextProvider = (props) => {
   };
 
   const fetchFoodList = async () => {
-    const response = await axios.get(url + "/api/food/list");
-    setFoodList(response.data.data);
+    try {
+      setLoading(true);
+      setError(false);
+      const response = await axios.get(url + "/api/food/list");
+      setFoodList(response.data.data);
+    } catch (err) {
+      setError(true);
+    } finally {
+      setLoading(false);
+    }
   };
 
   const loadCardData = async (token) => {
@@ -70,7 +80,7 @@ const StoreContextProvider = (props) => {
       }
     }
     loadData();
-  });
+  }, []);
 
   const contextValue = {
     food_list,
@@ -82,6 +92,7 @@ const StoreContextProvider = (props) => {
     url,
     token,
     setToken,
+    error,
     //adding use effect
     // : (newToken) => {
     //   localStorage.setItem("token", newToken);
@@ -90,7 +101,7 @@ const StoreContextProvider = (props) => {
   };
 
   return (
-    <StoreContext.Provider value={contextValue}>
+    <StoreContext.Provider value={contextValue} loading={loading}>
       {props.children}
     </StoreContext.Provider>
   );
