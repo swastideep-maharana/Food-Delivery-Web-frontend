@@ -3,6 +3,7 @@ import "./MyOrders.css";
 import { StoreContext } from "../../context/StorContext";
 import axios from "axios";
 import { InfinitySpin } from "react-loader-spinner";
+import parcelIcon from "../../assets/parcel_icon.png"; // Adjust the import based on your file structure
 
 const MyOrders = () => {
   const { url, token } = useContext(StoreContext);
@@ -60,22 +61,26 @@ const MyOrders = () => {
         )
       ) : (
         <ul>
-          {data.map((order) => (
-            <li key={order._id} className="order-item">
-              <p>Order ID: {order._id}</p>
-              <p>Total Amount: ${order.amount}</p>
+          {data.map((order, index) => (
+            <div key={index} className="my-orders-order">
+              <img src={parcelIcon} alt="Parcel Icon" />
               <p>
-                Order Date: {new Date(order.createdAt).toLocaleDateString()}
+                {order.items.map((item, index) => {
+                  if (index === order.items.length - 1) {
+                    return item.name + " x " + item.quantity;
+                  } else {
+                    return item.name + " x " + item.quantity + ", ";
+                  }
+                })}
               </p>
-              <p>Status: {order.status}</p>
-              <ul>
-                {order.items.map((item) => (
-                  <li key={item._id}>
-                    {item.name} - {item.quantity} x ${item.price}
-                  </li>
-                ))}
-              </ul>
-            </li>
+              <p>${order.amount}.00</p>
+              <p>Items:{order.items.length}</p>
+              <p>
+                <span>&#x25cf;</span>
+                <b>{order.status} </b>
+              </p>
+              <button onClick={fetchOrders}>Track Orders</button>
+            </div>
           ))}
         </ul>
       )}
