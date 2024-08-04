@@ -1,9 +1,8 @@
 import React, { useContext, useEffect } from "react";
-import "./Verify.css";
 import { useNavigate, useSearchParams } from "react-router-dom";
-
-import { StoreContext } from "../../context/StorContext";
 import axios from "axios";
+import { StoreContext } from "../../context/StorContext";
+import "./Verify.css";
 
 const Verify = () => {
   const [searchParams] = useSearchParams();
@@ -14,7 +13,7 @@ const Verify = () => {
 
   const verifyPayment = async () => {
     try {
-      const response = await axios.post(url + "/api/order/verify", {
+      const response = await axios.post(`${url}/api/order/verify`, {
         success,
         orderID,
       });
@@ -31,7 +30,7 @@ const Verify = () => {
 
   useEffect(() => {
     verifyPayment();
-  }, []);
+  }, []); // Empty dependency array ensures this runs once when the component mounts
 
   return (
     <div className="verify">
