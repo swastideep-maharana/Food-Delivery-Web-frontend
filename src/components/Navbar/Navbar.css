@@ -12,11 +12,6 @@
 
 .navbar .logo {
   width: 150px;
-  transition: transform 0.3s ease;
-}
-
-.navbar .logo:hover {
-  transform: scale(1.05);
 }
 
 .navbar-menu {
@@ -30,33 +25,10 @@
 
 .navbar-menu li {
   cursor: pointer;
-  position: relative;
-  transition: color 0.3s ease;
-  padding: 8px 16px;
-  border-radius: 5px;
-}
-
-.navbar-menu li:hover {
-  color: #007bff;
-  background: #f8f9fa;
 }
 
 .navbar .active {
   color: #007bff;
-  background: #e3f2fd;
-  font-weight: 600;
-}
-
-.navbar .active::after {
-  content: "";
-  position: absolute;
-  bottom: -2px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 20px;
-  height: 3px;
-  background: #007bff;
-  border-radius: 2px;
 }
 
 .navbar-right {
@@ -73,22 +45,12 @@
   padding: 12px 30px;
   border-radius: 5px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
   font-weight: 600;
-}
-
-.navbar button:hover {
-  background: #0056b3;
 }
 
 .navbar-search-icon {
   position: relative;
   cursor: pointer;
-  transition: transform 0.3s ease;
-}
-
-.navbar-search-icon:hover {
-  transform: scale(1.1);
 }
 
 .navbar-search-icon .dot {
@@ -104,11 +66,6 @@
 .navbar-profile {
   position: relative;
   cursor: pointer;
-  transition: transform 0.3s ease;
-}
-
-.navbar-profile:hover {
-  transform: scale(1.05);
 }
 
 .nav-profile-dropdown {
@@ -137,24 +94,12 @@
   gap: 12px;
   cursor: pointer;
   padding: 12px 20px;
-  transition: background-color 0.3s ease;
   color: #333;
   font-weight: 500;
 }
 
-.nav-profile-dropdown li:hover {
-  background: #f8f9fa;
-  color: #007bff;
-}
-
 .nav-profile-dropdown img {
   width: 20px;
-  filter: brightness(0.7);
-  transition: filter 0.3s ease;
-}
-
-.nav-profile-dropdown li:hover img {
-  filter: brightness(1);
 }
 
 @media (max-width: 1050px) {
@@ -207,8 +152,8 @@
   }
 
   .navbar-right button {
-    padding: 10px 22px;
-    font-size: 15px;
+    padding: 8px 20px;
+    font-size: 14px;
   }
 }
 
@@ -227,5 +172,14 @@
 
   .navbar-right {
     gap: 20px;
+  }
+
+  .navbar-right img {
+    width: 18px;
+  }
+
+  .navbar-right button {
+    padding: 6px 16px;
+    font-size: 13px;
   }
 }

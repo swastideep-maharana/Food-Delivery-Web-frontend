@@ -28,11 +28,6 @@
 .cart-items-item .cross {
   cursor: pointer;
   color: #dc3545;
-  transition: color 0.3s ease;
-}
-
-.cart-items-item .cross:hover {
-  color: #c82333;
 }
 
 .cart-bottom {
@@ -67,11 +62,6 @@
   padding: 12px 0px;
   border-radius: 5px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.cart-total button:hover {
-  background-color: #0056b3;
 }
 
 .cart-promocode {
@@ -108,11 +98,6 @@
   color: white;
   border-radius: 5px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.cart-promocode-input button:hover {
-  background-color: #555;
 }
 
 @media (max-width: 750px) {
@@ -123,4 +108,4 @@
   .cart-promocode {
     justify-content: start;
   }
-} 
+}
