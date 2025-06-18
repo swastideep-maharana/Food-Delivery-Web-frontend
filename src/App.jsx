@@ -8,13 +8,12 @@ import Footer from "./components/Footer/Footer";
 import LoginPopup from "./components/LoginPopup/LoginPopup";
 import Verify from "./pages/Verify/Verify";
 import MyOrders from "./pages/MyOrders/MyOrders";
-import ErrorBoundary from "./components/ErrorBoundary/ErrorBoundary";
 
 const App = () => {
   const [showLogin, setShowLogin] = useState(false);
 
   return (
-    <ErrorBoundary>
+    <>
       {showLogin ? <LoginPopup setShowLogin={setShowLogin} /> : <></>}
       <div className="app">
         <Navbar setShowLogin={setShowLogin} />
@@ -27,7 +26,7 @@ const App = () => {
         </Routes>
       </div>
       <Footer />
-    </ErrorBoundary>
+    </>
   );
 };
 
