@@ -1,35 +1,21 @@
 .food-display {
-  margin: 3rem 0;
-  padding: 0 1.5rem;
+  margin: 40px 0;
+  padding: 0 20px;
 }
 
 .food-display h2 {
-  font-size: 2.5rem;
+  font-size: 32px;
   font-weight: 700;
-  color: #1a202c;
+  color: #333;
   text-align: center;
-  margin-bottom: 3rem;
-  position: relative;
-  letter-spacing: -0.02em;
-}
-
-.food-display h2::after {
-  content: "";
-  position: absolute;
-  bottom: -0.75rem;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 60px;
-  height: 4px;
-  background: #007bff;
-  border-radius: 2px;
+  margin-bottom: 40px;
 }
 
 .food-display-list {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 2rem;
-  margin-top: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  margin-top: 30px;
 }
 
 .loading-more {
@@ -37,30 +23,28 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 3rem 1.5rem;
-  margin: 3rem 0;
+  padding: 40px 20px;
+  margin: 40px 0;
   background: #f8f9fa;
-  border-radius: 12px;
-  border: 1px solid #e2e8f0;
+  border-radius: 8px;
 }
 
 .loading-more p {
-  margin-top: 1rem;
-  color: #4a5568;
-  font-size: 1rem;
+  margin-top: 15px;
+  color: #666;
+  font-size: 16px;
   font-weight: 500;
 }
 
 .no-more-items {
   text-align: center;
-  padding: 3rem 1.5rem;
-  color: #4a5568;
+  padding: 40px 20px;
+  color: #666;
   font-style: italic;
-  font-size: 1rem;
+  font-size: 16px;
   background: #f8f9fa;
-  border-radius: 12px;
-  margin: 2rem 0;
-  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  margin: 20px 0;
 }
 
 .error-message {
@@ -68,92 +52,63 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 4rem 1.5rem;
+  padding: 60px 20px;
   text-align: center;
   background: white;
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-  border: 1px solid #e2e8f0;
-  margin: 2rem 0;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  margin: 20px 0;
 }
 
 .error-message p {
   color: #dc3545;
-  font-size: 1.125rem;
+  font-size: 18px;
   font-weight: 500;
-  margin-bottom: 1.5rem;
+  margin-bottom: 20px;
 }
 
 .retry-button {
-  margin-top: 1.5rem;
-  padding: 0.875rem 2rem;
+  margin-top: 20px;
+  padding: 12px 30px;
   background: #007bff;
   color: white;
   border: none;
-  border-radius: 8px;
+  border-radius: 5px;
   cursor: pointer;
-  font-size: 1rem;
+  font-size: 16px;
   font-weight: 600;
-  transition: all 0.2s ease;
-  box-shadow: 0 2px 4px rgba(0, 123, 255, 0.2);
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
+  transition: background-color 0.3s ease;
 }
 
 .retry-button:hover {
   background: #0056b3;
-  transform: translateY(-1px);
-  box-shadow: 0 4px 8px rgba(0, 123, 255, 0.3);
-}
-
-.retry-button:active {
-  transform: translateY(0);
 }
 
 /* Responsive design */
 @media (max-width: 768px) {
   .food-display {
-    padding: 0 1rem;
-    margin: 2rem 0;
+    padding: 0 15px;
+    margin: 30px 0;
   }
 
   .food-display h2 {
-    font-size: 2rem;
-    margin-bottom: 2rem;
+    font-size: 28px;
+    margin-bottom: 30px;
   }
 
   .food-display-list {
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 1.5rem;
-  }
-
-  .loading-more,
-  .no-more-items,
-  .error-message {
-    padding: 2rem 1rem;
-    margin: 1.5rem 0;
+    gap: 20px;
   }
 }
 
 @media (max-width: 480px) {
-  .food-display {
-    padding: 0 0.75rem;
-  }
-
   .food-display h2 {
-    font-size: 1.75rem;
+    font-size: 24px;
   }
 
   .food-display-list {
     grid-template-columns: 1fr;
-    gap: 1rem;
-  }
-
-  .loading-more,
-  .no-more-items,
-  .error-message {
-    padding: 1.5rem 0.75rem;
-    margin: 1rem 0;
+    gap: 15px;
   }
 }
