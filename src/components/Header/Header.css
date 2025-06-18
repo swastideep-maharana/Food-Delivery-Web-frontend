@@ -1,6 +1,6 @@
 .header {
   height: 34vw;
-  margin: 30px auto;
+  margin: 30px 20px;
   background: url("/header_img.png") no-repeat;
   background-size: contain;
   background-position: center;
@@ -60,7 +60,7 @@
 @media (max-width: 750px) {
   .header {
     height: 40vw;
-    margin: 20px auto;
+    margin: 20px 15px;
   }
 
   .header-contents {
@@ -82,6 +82,7 @@
 @media (max-width: 480px) {
   .header {
     height: 45vw;
+    margin: 15px 10px;
   }
 
   .header-contents {
