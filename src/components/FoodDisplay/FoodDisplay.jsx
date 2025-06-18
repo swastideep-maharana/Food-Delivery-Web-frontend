@@ -2,17 +2,31 @@ import React, { useContext, useMemo, useCallback } from "react";
 import "./FoodDisplay.css";
 import { StoreContext } from "../../context/StorContext";
 import FoodItem from "../FoodItem/FoodItem";
-import { InfinitySpin } from "react-loader-spinner";
+import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
 
 const FoodDisplay = ({ category }) => {
-  const { food_list, loading, error, hasMore, loadMoreFood } =
-    useContext(StoreContext);
+  const context = useContext(StoreContext);
+
+  // Fallback if context is not available
+  if (!context) {
+    return (
+      <div className="food-display" id="food-display">
+        <h2>Top dishes near you</h2>
+        <LoadingSpinner size="200" text="Initializing..." />
+      </div>
+    );
+  }
+
+  const { food_list, loading, error, hasMore, loadMoreFood } = context;
+
+  // Ensure food_list is always an array
+  const safeFoodList = Array.isArray(food_list) ? food_list : [];
 
   const filteredFoodList = useMemo(() => {
-    return food_list.filter(
+    return safeFoodList.filter(
       (item) => category === "All" || category === item.category
     );
-  }, [food_list, category]);
+  }, [safeFoodList, category]);
 
   const handleScroll = useCallback(() => {
     if (
@@ -51,14 +65,7 @@ const FoodDisplay = ({ category }) => {
     <div className="food-display" id="food-display">
       <h2>Top dishes near you</h2>
       {!filteredFoodList.length && loading ? (
-        <div className="food-display-list">
-          <InfinitySpin
-            visible={true}
-            width="200"
-            color="tomato"
-            ariaLabel="infinity-spin-loading"
-          />
-        </div>
+        <LoadingSpinner size="200" text="Loading delicious food..." />
       ) : (
         <>
           <div className="food-display-list">
@@ -74,15 +81,7 @@ const FoodDisplay = ({ category }) => {
             ))}
           </div>
           {loading && (
-            <div className="loading-more">
-              <InfinitySpin
-                visible={true}
-                width="100"
-                color="tomato"
-                ariaLabel="loading-more"
-              />
-              <p>Loading more items...</p>
-            </div>
+            <LoadingSpinner size="100" text="Loading more items..." />
           )}
           {!hasMore && filteredFoodList.length > 0 && (
             <div className="no-more-items">

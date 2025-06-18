@@ -4,8 +4,29 @@ import { assets } from "../../assets/assets";
 import { StoreContext } from "../../context/StorContext";
 
 const FoodItem = ({ id, name, price, description, image }) => {
-  const { cartItems, addToCart, removeFromCart, url } =
-    useContext(StoreContext);
+  const context = useContext(StoreContext);
+
+  // Fallback if context is not available
+  if (!context) {
+    return (
+      <div className="food-item">
+        <div className="food-item-img-container">
+          <div className="food-item-image-placeholder">
+            <span>Loading...</span>
+          </div>
+        </div>
+        <div className="food-item-info">
+          <div className="food-item-name-rating">
+            <p>{name || "Loading..."}</p>
+          </div>
+          <p className="food-item-desc">{description || "Loading..."}</p>
+          <p className="food-item-price">${price || "0"}</p>
+        </div>
+      </div>
+    );
+  }
+
+  const { cartItems, addToCart, removeFromCart, url } = context;
   const [imageLoaded, setImageLoaded] = useState(false);
   const [imageError, setImageError] = useState(false);
 
