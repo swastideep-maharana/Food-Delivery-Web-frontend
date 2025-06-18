@@ -13,14 +13,19 @@
   font-size: 30px;
   font-weight: 600;
   margin-bottom: 50px;
+  color: #333;
 }
 .place-order-left input {
   margin-bottom: 15px;
   width: 100%;
   padding: 10px;
-  border: 1px solid #c5c5c5;
-  border-radius: 4px;
-  outline-color: tomato;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+.place-order-left input:focus {
+  border-color: #007bff;
 }
 .place-order-left .multi-fields {
   display: flex;
