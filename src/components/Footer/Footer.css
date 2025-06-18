@@ -1,20 +1,22 @@
 .Footer {
-  color: #d9d9d9;
-  background-color: #333;
+  color: #e0e0e0;
+  background: #23272f;
   display: flex;
   align-items: center;
   flex-direction: column;
-  gap: 20px;
-  padding: 20px 8vw;
+  gap: 24px;
+  padding: 36px 8vw 18px 8vw;
   padding-top: 80px;
   margin-top: 100px;
+  border-radius: 16px 16px 0 0;
+  box-shadow: 0 -2px 16px rgba(0,0,0,0.06);
 }
 
 .footer-content {
   width: 100%;
   display: grid;
   grid-template-columns: 2fr 1fr 1fr;
-  gap: 80px;
+  gap: 60px;
 }
 
 .footer-content-left,
@@ -22,8 +24,8 @@
 .footer-content-center {
   display: flex;
   flex-direction: column;
-  align-items: start;
-  gap: 20px;
+  align-items: flex-start;
+  gap: 16px;
 }
 
 .footer-content-left p,
@@ -31,43 +33,71 @@
 .footer-content-right li,
 .footer-content-center li {
   list-style: none;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
   cursor: pointer;
+  font-size: 1.05rem;
+  color: #b0b0b0;
+  transition: color 0.18s;
 }
-
+.footer-content-left li:hover,
+.footer-content-right li:hover,
+.footer-content-center li:hover {
+  color: #007bff;
+}
 .footer-content-right h2,
 .footer-content-center h2 {
-  color: white;
+  color: #fff;
+  font-size: 1.1rem;
+  margin-bottom: 8px;
 }
-
 .footer-social-icons img {
-  width: 40px;
-  margin-right: 15px;
+  width: 36px;
+  margin-right: 10px;
+  transition: transform 0.18s;
 }
-
+.footer-social-icons img:hover {
+  transform: scale(1.12);
+}
 .footer hr {
   width: 100%;
   height: 2px;
-  margin: 20px 0;
-  background-color: #666;
+  margin: 18px 0;
+  background-color: #444;
   border: none;
 }
-
 .footer-copyright {
-  color: #718096;
-  font-size: 0.875rem;
+  color: #b0b0b0;
+  font-size: 0.95rem;
   text-align: center;
   margin: 0;
   font-weight: 400;
 }
-
+@media (max-width: 900px) {
+  .footer-content {
+    gap: 30px;
+  }
+}
 @media (max-width: 750px) {
   .footer-content {
     display: flex;
     flex-direction: column;
-    gap: 35px;
+    gap: 24px;
   }
   .footer-copyright {
     text-align: center;
+  }
+}
+@media (max-width: 600px) {
+  .Footer {
+    padding: 24px 2vw 10px 2vw;
+    gap: 12px;
+    border-radius: 10px 10px 0 0;
+  }
+  .footer-content {
+    gap: 12px;
+  }
+  .footer-social-icons img {
+    width: 28px;
+    margin-right: 6px;
   }
 }

@@ -9,11 +9,89 @@
   color: #333;
   text-align: center;
   margin-bottom: 40px;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  max-width: 100%;
 }
 
 .food-display-list {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 30px;
-  margin-top: 30px;
+  gap: 32px;
+  margin-top: 36px;
+.food-display {
+  margin: 40px 0;
+  padding: 0 20px;
+}
+
+.food-display h2 {
+  font-size: 32px;
+  font-weight: 700;
+  color: #333;
+  text-align: center;
+  margin-bottom: 40px;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  max-width: 100%;
+}
+
+.food-display-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 32px;
+  margin-top: 36px;
+  padding-bottom: 16px;
+}
+
+/* Mobile responsive improvements */
+@media (max-width: 768px) {
+  .food-display {
+    padding: 0 15px;
+    margin: 30px 0;
+  }
+
+  .food-display h2 {
+    font-size: 28px;
+    margin-bottom: 30px;
+    padding: 0 10px;
+  }
+
+  .food-display-list {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .food-display {
+    padding: 0 10px;
+    margin: 20px 0;
+  }
+
+  .food-display h2 {
+    font-size: 24px;
+    margin-bottom: 25px;
+    padding: 0 5px;
+  }
+
+  .food-display-list {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+}
+
+@media (max-width: 360px) {
+  .food-display {
+    padding: 0 8px;
+    margin: 15px 0;
+  }
+
+  .food-display h2 {
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+
+  .food-display-list {
+    gap: 12px;
+  }
 }
