@@ -1,16 +1,38 @@
 .food-display {
-  margin-top: 30px;
+  margin: 40px 0;
+  padding: 0 20px;
 }
+
 .food-display h2 {
-  font-size: max(2vw, 2px);
-  font-weight: 600;
+  font-size: 32px;
+  font-weight: 700;
+  color: #2d3748;
+  text-align: center;
+  margin-bottom: 40px;
+  background: linear-gradient(45deg, #667eea, #764ba2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  position: relative;
 }
+
+.food-display h2::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 4px;
+  background: linear-gradient(90deg, #667eea, #764ba2);
+  border-radius: 2px;
+}
+
 .food-display-list {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-  margin-top: 30px;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 30px;
-  row-gap: 50px;
+  margin-top: 30px;
 }
 
 .loading-more {
@@ -18,21 +40,30 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 20px;
-  margin: 20px 0;
+  padding: 40px 20px;
+  margin: 40px 0;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
 }
 
 .loading-more p {
-  margin-top: 10px;
-  color: #666;
-  font-size: 14px;
+  margin-top: 15px;
+  color: #718096;
+  font-size: 16px;
+  font-weight: 500;
 }
 
 .no-more-items {
   text-align: center;
-  padding: 20px;
-  color: #666;
+  padding: 40px 20px;
+  color: #718096;
   font-style: italic;
+  font-size: 16px;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+  margin: 20px 0;
 }
 
 .error-message {
@@ -40,22 +71,69 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 40px 20px;
+  padding: 60px 20px;
   text-align: center;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.error-message p {
+  color: #e53e3e;
+  font-size: 18px;
+  font-weight: 500;
+  margin-bottom: 20px;
 }
 
 .retry-button {
-  margin-top: 15px;
-  padding: 10px 20px;
-  background-color: #ff6b6b;
+  margin-top: 20px;
+  padding: 12px 30px;
+  background: linear-gradient(45deg, #667eea, #764ba2);
   color: white;
   border: none;
-  border-radius: 5px;
+  border-radius: 12px;
   cursor: pointer;
-  font-size: 14px;
-  transition: background-color 0.3s ease;
+  font-size: 16px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
 }
 
 .retry-button:hover {
-  background-color: #ff5252;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+}
+
+.retry-button:active {
+  transform: translateY(0);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .food-display {
+    padding: 0 15px;
+    margin: 30px 0;
+  }
+
+  .food-display h2 {
+    font-size: 28px;
+    margin-bottom: 30px;
+  }
+
+  .food-display-list {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .food-display h2 {
+    font-size: 24px;
+  }
+
+  .food-display-list {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
 }
