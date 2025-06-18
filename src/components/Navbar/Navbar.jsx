@@ -1,18 +1,14 @@
 import React, { useContext, useState } from "react";
 import "./Navbar.css";
 import { assets } from "../../assets/assets";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { StoreContext } from "../../context/StorContext";
 
 const Navbar = ({ setShowLogin }) => {
   const [menu, setMenu] = useState("home");
   const { getTotalCartAmount, token, setToken } = useContext(StoreContext);
-
-  // const handleLogout = () => {
-  //   setToken(null);
-  //   // Optionally, redirect or perform other logout actions
-  // };
   const navigate = useNavigate();
+  const location = useLocation();
 
   const logout = () => {
     localStorage.removeItem("token");
@@ -20,40 +16,52 @@ const Navbar = ({ setShowLogin }) => {
     navigate("/");
   };
 
+  const handleMenuClick = (menuItem) => {
+    setMenu(menuItem);
+  };
+
   return (
     <div className="navbar">
-      <Link to="/">
+      <Link to="/" onClick={() => handleMenuClick("home")}>
         <img src={assets.logo} alt="Logo" className="logo" />
       </Link>
       <ul className="navbar-menu">
-        <Link
-          to="/"
-          onClick={() => setMenu("home")}
-          className={menu === "home" ? "active" : ""}
-        >
-          Home
-        </Link>
-        <a
-          href="#explore-menu"
-          onClick={() => setMenu("menu")}
-          className={menu === "menu" ? "active" : ""}
-        >
-          Menu
-        </a>
-        <a
-          href="#app-download"
-          onClick={() => setMenu("mobile-app")}
-          className={menu === "mobile-app" ? "active" : ""}
-        >
-          Mobile App
-        </a>
-        <a
-          href="#footer"
-          onClick={() => setMenu("contact-us")}
-          className={menu === "contact-us" ? "active" : ""}
-        >
-          Contact Us
-        </a>
+        <li>
+          <Link
+            to="/"
+            onClick={() => handleMenuClick("home")}
+            className={menu === "home" ? "active" : ""}
+          >
+            Home
+          </Link>
+        </li>
+        <li>
+          <a
+            href="#explore-menu"
+            onClick={() => handleMenuClick("menu")}
+            className={menu === "menu" ? "active" : ""}
+          >
+            Menu
+          </a>
+        </li>
+        <li>
+          <a
+            href="#app-download"
+            onClick={() => handleMenuClick("mobile-app")}
+            className={menu === "mobile-app" ? "active" : ""}
+          >
+            Mobile App
+          </a>
+        </li>
+        <li>
+          <a
+            href="#footer"
+            onClick={() => handleMenuClick("contact-us")}
+            className={menu === "contact-us" ? "active" : ""}
+          >
+            Contact Us
+          </a>
+        </li>
       </ul>
       <div className="navbar-right">
         <img src={assets.search_icon} alt="Search" />
