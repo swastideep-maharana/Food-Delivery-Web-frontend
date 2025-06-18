@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState, useCallback } from "react";
+import { createContext, useEffect, useState } from "react";
 import axios from "axios";
 // import { food_list } from "../assets/assets";
 
@@ -23,22 +23,11 @@ const StoreContextProvider = (props) => {
         );
       } catch (error) {
         console.error("Error adding to cart:", error);
-        // Revert the local state if API call fails
-        setCartItems((prev) => {
-          const updatedCart = { ...prev };
-          if (updatedCart[itemId] > 1) {
-            updatedCart[itemId] -= 1;
-          } else {
-            delete updatedCart[itemId];
-          }
-          return updatedCart;
-        });
       }
     }
   };
 
   const removeFromCart = async (itemId) => {
-    const previousCount = cartItems[itemId] || 0;
     setCartItems((prev) => {
       const updatedCart = { ...prev };
       if (updatedCart[itemId] > 1) {
@@ -48,7 +37,6 @@ const StoreContextProvider = (props) => {
       }
       return updatedCart;
     });
-
     if (token) {
       try {
         await axios.post(
@@ -58,11 +46,6 @@ const StoreContextProvider = (props) => {
         );
       } catch (error) {
         console.error("Error removing from cart:", error);
-        // Revert the local state if API call fails
-        setCartItems((prev) => ({
-          ...prev,
-          [itemId]: previousCount,
-        }));
       }
     }
   };
@@ -74,7 +57,7 @@ const StoreContextProvider = (props) => {
     }, 0);
   };
 
-  const fetchFoodList = useCallback(async () => {
+  const fetchFoodList = async () => {
     try {
       setLoading(true);
       setError(false);
@@ -87,7 +70,7 @@ const StoreContextProvider = (props) => {
     } finally {
       setLoading(false);
     }
-  }, [url]);
+  };
 
   const loadCardData = async (token) => {
     try {
@@ -103,10 +86,6 @@ const StoreContextProvider = (props) => {
     }
   };
 
-  const retryFetchFoodList = () => {
-    fetchFoodList();
-  };
-
   useEffect(() => {
     async function loadData() {
       await fetchFoodList();
@@ -116,7 +95,7 @@ const StoreContextProvider = (props) => {
       }
     }
     loadData();
-  }, [fetchFoodList]);
+  }, []);
 
   const contextValue = {
     food_list,
@@ -130,7 +109,6 @@ const StoreContextProvider = (props) => {
     setToken,
     error,
     loading,
-    retryFetchFoodList,
   };
 
   return (

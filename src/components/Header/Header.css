@@ -1,14 +1,12 @@
 .header {
   height: 34vw;
-  margin: 0;
-  padding: 30px 20px;
+  margin: 30px 20px;
   background: url("/header_img.png") no-repeat;
   background-size: contain;
   background-position: center;
   position: relative;
-  border-radius: 0;
+  border-radius: 8px;
   overflow: hidden;
-  width: 100%;
 }
 
 .header-contents {
@@ -62,8 +60,7 @@
 @media (max-width: 750px) {
   .header {
     height: 40vw;
-    margin: 0;
-    padding: 20px 15px;
+    margin: 20px 15px;
   }
 
   .header-contents {
@@ -85,8 +82,7 @@
 @media (max-width: 480px) {
   .header {
     height: 45vw;
-    margin: 0;
-    padding: 15px 10px;
+    margin: 15px 10px;
   }
 
   .header-contents {
