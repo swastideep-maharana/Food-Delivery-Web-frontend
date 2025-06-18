@@ -1,38 +1,46 @@
 .header {
   height: 34vw;
-  margin: 30px 20px;
+  margin: 2rem 1.5rem;
   background: url("/header_img.png") no-repeat;
   background-size: contain;
   background-position: center;
   position: relative;
-  border-radius: 8px;
+  border-radius: 12px;
   overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  animation: fadein 0.6s ease-out;
 }
 
 .header-contents {
   position: absolute;
   display: flex;
   flex-direction: column;
-  align-items: start;
-  gap: 2vw;
+  align-items: flex-start;
+  gap: 1.5vw;
   max-width: 50%;
-  bottom: 10%;
+  bottom: 12%;
   left: 6vw;
+  z-index: 2;
 }
 
 .header-contents h2 {
   font-weight: 700;
-  color: #333;
-  font-size: max(4.5vw, 28px);
+  color: #1a202c;
+  font-size: max(4.5vw, 2.5rem);
   margin: 0;
   line-height: 1.2;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  letter-spacing: -0.02em;
 }
 
 .header-contents p {
-  color: #666;
-  font-size: max(1.2vw, 16px);
+  color: #4a5568;
+  font-size: max(1.2vw, 1.125rem);
   line-height: 1.6;
   margin: 0;
+  font-weight: 400;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  max-width: 90%;
 }
 
 .header-contents button {
@@ -41,32 +49,49 @@
   font-weight: 600;
   padding: 1.2vw 2.5vw;
   background: #007bff;
-  font-size: max(1.1vw, 16px);
-  border-radius: 5px;
+  font-size: max(1.1vw, 1rem);
+  border-radius: 8px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 8px rgba(0, 123, 255, 0.3);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
 }
 
 .header-contents button:hover {
   background: #0056b3;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 123, 255, 0.4);
+}
+
+.header-contents button:active {
+  transform: translateY(-1px);
 }
 
 @media (max-width: 1050px) {
+  .header {
+    margin: 1.5rem 1.25rem;
+  }
+
   .header-contents {
     max-width: 45%;
+    bottom: 10%;
   }
 }
 
 @media (max-width: 750px) {
   .header {
     height: 40vw;
-    margin: 20px 15px;
+    margin: 1.25rem 1rem;
   }
 
   .header-contents {
     max-width: 65%;
     left: 5vw;
     bottom: 8%;
+    gap: 1vw;
   }
 
   .header-contents p {
@@ -75,14 +100,14 @@
 
   .header-contents button {
     padding: 2.5vw 5vw;
-    font-size: 18px;
+    font-size: 1.125rem;
   }
 }
 
 @media (max-width: 480px) {
   .header {
     height: 45vw;
-    margin: 15px 10px;
+    margin: 1rem 0.75rem;
   }
 
   .header-contents {
@@ -92,11 +117,11 @@
   }
 
   .header-contents h2 {
-    font-size: 24px;
+    font-size: 1.75rem;
   }
 
   .header-contents button {
     padding: 3vw 6vw;
-    font-size: 16px;
+    font-size: 1rem;
   }
 }

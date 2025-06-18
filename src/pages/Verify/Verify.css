@@ -1,18 +1,240 @@
 .verify {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   min-height: 60vh;
-  display: grid;
+  padding: 3rem 2rem;
+  text-align: center;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e2e8f0;
+  margin: 2rem 1.5rem;
+  animation: fadein 0.4s ease-out;
 }
-.verify .spinner {
-  width: 100px;
-  height: 100px;
-  place-self: center;
-  border: 5px solid #e0e0e0;
-  border-top-color: #007bff;
+
+.verify h1 {
+  color: #1a202c;
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  letter-spacing: -0.02em;
+}
+
+.verify p {
+  color: #4a5568;
+  font-size: 1.125rem;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+  max-width: 500px;
+  font-weight: 400;
+}
+
+.verify-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.verify-form input {
+  width: 100%;
+  padding: 1rem 1.25rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: all 0.2s ease;
+  background: white;
+  color: #1a202c;
+  text-align: center;
+  letter-spacing: 0.5em;
+  font-weight: 600;
+}
+
+.verify-form input:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+}
+
+.verify-form input::placeholder {
+  color: #a0aec0;
+  font-weight: 400;
+  letter-spacing: normal;
+}
+
+.verify-form button {
+  background: #007bff;
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 4px rgba(0, 123, 255, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.verify-form button:hover {
+  background: #0056b3;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 123, 255, 0.3);
+}
+
+.verify-form button:active {
+  transform: translateY(0);
+}
+
+.verify-form button:disabled {
+  background: #cbd5e0;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.verify-success {
+  background: #c6f6d5;
+  color: #2f855a;
+  padding: 1rem;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  border: 1px solid #9ae6b4;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.verify-error {
+  background: #fed7d7;
+  color: #c53030;
+  padding: 1rem;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  border: 1px solid #feb2b2;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.verify-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  color: #4a5568;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.verify-loading-spinner {
+  width: 20px;
+  height: 20px;
+  border: 2px solid #e2e8f0;
+  border-top: 2px solid #007bff;
   border-radius: 50%;
-  animation: rotate 1s infinite;
+  animation: spin 1s linear infinite;
 }
-@keyframes rotate {
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
   100% {
     transform: rotate(360deg);
+  }
+}
+
+.verify-resend {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #e2e8f0;
+}
+
+.verify-resend p {
+  color: #4a5568;
+  font-size: 0.95rem;
+  margin-bottom: 1rem;
+  font-weight: 400;
+}
+
+.verify-resend button {
+  background: transparent;
+  color: #007bff;
+  border: 1px solid #007bff;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.verify-resend button:hover {
+  background: #007bff;
+  color: white;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 123, 255, 0.3);
+}
+
+.verify-resend button:disabled {
+  background: #f8f9fa;
+  color: #a0aec0;
+  border-color: #e2e8f0;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+@media (max-width: 768px) {
+  .verify {
+    padding: 2rem 1.5rem;
+    margin: 1.5rem 1rem;
+  }
+
+  .verify h1 {
+    font-size: 2rem;
+  }
+
+  .verify p {
+    font-size: 1rem;
+  }
+
+  .verify-form {
+    max-width: 350px;
+  }
+}
+
+@media (max-width: 480px) {
+  .verify {
+    padding: 1.5rem 1rem;
+    margin: 1rem 0.75rem;
+  }
+
+  .verify h1 {
+    font-size: 1.75rem;
+  }
+
+  .verify-form input {
+    padding: 0.875rem 1rem;
+    font-size: 0.95rem;
+  }
+
+  .verify-form button {
+    padding: 0.875rem 1.5rem;
   }
 }
