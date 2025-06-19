@@ -2,7 +2,6 @@ import React, { useContext, useEffect } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import axios from "axios";
 import { StoreContext } from "../../context/StorContext";
-import "./Verify.css";
 
 const Verify = () => {
   const [searchParams] = useSearchParams();
@@ -23,18 +22,23 @@ const Verify = () => {
         navigate("/");
       }
     } catch (error) {
-      console.error("Verification failed", error);
       navigate("/");
     }
   };
 
   useEffect(() => {
     verifyPayment();
-  }, []); // Empty dependency array ensures this runs once when the component mounts
+  }, []);
 
   return (
-    <div className="verify">
-      <div className="spinner"></div>
+    <div className="min-h-[60vh] flex flex-col items-center justify-center bg-white rounded-xl shadow p-8 mt-16 mx-auto max-w-lg">
+      <div className="w-24 h-24 border-8 border-gray-200 border-t-primary rounded-full animate-spin mb-8"></div>
+      <h1 className="text-2xl font-bold mb-2 text-primary">
+        Verifying Payment...
+      </h1>
+      <p className="text-gray-600 text-center">
+        Please wait while we verify your payment and update your order status.
+      </p>
     </div>
   );
 };

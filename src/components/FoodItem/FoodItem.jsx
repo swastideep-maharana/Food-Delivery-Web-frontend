@@ -1,5 +1,4 @@
 import React, { useContext } from "react";
-import "./FoodItem.css";
 import { assets } from "../../assets/assets";
 import { StoreContext } from "../../context/StorContext";
 
@@ -8,43 +7,45 @@ const FoodItem = ({ id, name, price, description, image }) => {
     useContext(StoreContext);
 
   return (
-    <div className="food-item">
-      <div className="food-item-img-container">
+    <div className="bg-white rounded-2xl shadow-lg p-4 flex flex-col items-center hover:scale-105 transition-transform duration-200">
+      <div className="relative w-32 h-32 mb-4 flex items-center justify-center">
         <img
-          className="food-item-image"
+          className="w-full h-full object-cover rounded-full border-4 border-primary shadow"
           src={url + "/images/" + image}
-          alt=""
+          alt={name}
         />
         {!cartItems[id] ? (
-          <img
-            className="add"
+          <button
+            className="absolute bottom-2 right-2 bg-primary rounded-full p-2 shadow hover:bg-primary-dark transition"
             onClick={() => addToCart(id)}
-            src={assets.add_icon_white}
-            alt=""
-          />
+          >
+            <img className="w-6 h-6" src={assets.add_icon_white} alt="Add" />
+          </button>
         ) : (
-          <div className="food-item-counter">
-            <img
-              onClick={() => removeFromCart(id)}
-              src={assets.remove_icon_red}
-              alt=""
-            />
-            <p>{cartItems[id]}</p>
-            <img
-              onClick={() => addToCart(id)}
-              src={assets.add_icon_green}
-              alt=""
-            />
+          <div className="absolute bottom-2 right-2 flex items-center gap-2 bg-white rounded-full px-2 py-1 shadow">
+            <button onClick={() => removeFromCart(id)}>
+              <img
+                className="w-6 h-6"
+                src={assets.remove_icon_red}
+                alt="Remove"
+              />
+            </button>
+            <span className="font-bold text-primary text-lg">
+              {cartItems[id]}
+            </span>
+            <button onClick={() => addToCart(id)}>
+              <img className="w-6 h-6" src={assets.add_icon_green} alt="Add" />
+            </button>
           </div>
         )}
       </div>
-      <div className="food-item-info">
-        <div className="food-item-name-rating">
-          <p>{name}</p>
-          <img src={assets.rating_starts} alt="" />
+      <div className="w-full flex flex-col items-center">
+        <div className="flex items-center gap-2 mb-1">
+          <p className="font-semibold text-lg text-gray-900">{name}</p>
+          <img src={assets.rating_starts} alt="Rating" className="w-16 h-4" />
         </div>
-        <p className="food-item-desc">{description}</p>
-        <p className="food-item-price">${price}</p>
+        <p className="text-gray-500 text-center text-sm mb-2">{description}</p>
+        <p className="text-primary font-bold text-xl">${price}</p>
       </div>
     </div>
   );
